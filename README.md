@@ -26,7 +26,7 @@ Screen DarkTheme:
 <div align="center" style="display: flex; flex-direction: row; justify-content: center; gap: 15px; flex-wrap: wrap;">
   
   <div style="text-align: center;">
-    <p><b>☀️ Светлая тема & Квиз</b></p>
+    <p><b>🌙 Темная тема & Работа над ошибками</b></p>
     <video src="https://github.com/user-attachments/assets/dde843a4-5409-4a87-ac3e-f8c22c4d666f" 
            width="260" 
            controls 
@@ -38,7 +38,7 @@ Screen DarkTheme:
   </div>
 
   <div style="text-align: center;">
-    <p><b>🌙 Темная тема & Работа над ошибками</b></p>
+    <p><b>☀️ Светлая тема & Квиз</b></p>
     <video src="https://github.com/user-attachments/assets/9aead25e-8d7a-411e-8bba-14da7da93366" 
            width="260" 
            controls 
