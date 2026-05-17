@@ -94,6 +94,131 @@ Screen DarkTheme:
 
 ---
 
+## 🤖 Интеграция с ИИ и LLM-Промптинг (Gemini API)
+
+Генерация учебных материалов в **Edoox.com** происходит динамически на основе запросов к Gemini API. Интеграция спроектирована так, чтобы ИИ возвращал строго детерминированный, валидный **JSON** без лишнего markdown-окружения (без ` ```json `), который затем парсится в типы данных Kotlin на уровне `shared` модуля.
+
+### 📋 Схемы ожидаемых JSON-ответов от LLM
+
+В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
+
+<details>
+<summary>1. Схема для вопросов с выбором ответа (CHOICE)</summary>
+
+```json
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "answers": [
+        { "answer": "string", "correct": true },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "correct_answer": "string"
+    }
+  ]
+}
+```
+
+```json
+{
+  "quizDragAndDrop": [
+    {
+      "connectedText": {
+        "string": "string",
+        "string": "string",
+        "string": "string"
+      },
+      "explanation": "string"
+    }
+  ]
+}
+```
+
+Вот готовый, отлично структурированный технический блок для вашего README.md. Этот раздел подробно описывает интеграцию приложения с Большими Языковыми Моделями (LLM), алгоритм генерации квизов, структуры JSON-ответов и детальные системные промты для Gemini API.
+
+Вы можете вставить его сразу после раздела об архитектуре или перед галереей скриншотов.
+
+Markdown
+---
+
+## 🤖 Интеграция с ИИ и LLM-Промптинг (Gemini API)
+
+Генерация учебных материалов в **Edoox.com** происходит динамически на основе запросов к Gemini API. Интеграция спроектирована так, чтобы ИИ возвращал строго детерминированный, валидный **JSON** без лишнего markdown-окружения (без ` ```json `), который затем парсится в типы данных Kotlin на уровне `shared` модуля.
+
+### 📋 Схемы ожидаемых JSON-ответов от LLM
+
+В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
+
+1. Схема для вопросов с выбором ответа (CHOICE)
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "answers": [
+        { "answer": "string", "correct": true },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false }
+      ]
+    }
+  ]
+}
+
+<details>
+<summary>1. Схема для заполнение(Fill)</summary>
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "correct_answer": "string"
+    }
+  ]
+}
+<details>
+<summary>1. Схема для drag and drop(Drag and drop)</summary>
+{
+  "quizDragAndDrop": [
+    {
+      "connectedText": {
+        "string": "string",
+        "string": "string",
+        "string": "string"
+      },
+      "explanation": "string"
+    }
+  ]
+}
+  
+📝 Шаблоны генерации промтов (Prompt Engineering)
+
+Для обеспечения высокого качества контента, исключения очевидных вариантов ответов и строгого следования выбранному языку (ru или kk), используются специализированные промты.
+
+🔹 1. Тесты с выбором ответа (toChoiceGeminiPrompt)
+
+Промт требует от модели создания дистракторов (неверных вариантов), основанных на классических ошибках учащихся, исключая чисто теоретические вопросы в пользу практических задач:
+
+
+
+
+---
+
 ## 🛠 Порядок сборки и запуска
 
 ### Требования к окружению:
