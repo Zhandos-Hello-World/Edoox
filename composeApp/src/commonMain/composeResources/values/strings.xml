@@ -1,0 +1,6 @@
+<resources>
+    <string name="quiz_review_title">Работа над ошибками</string>
+    <string name="quiz_review_btn_remember">Запомнил</string>
+    <string name="quiz_review_btn_home">На Главную</string>
+    <string name="quiz_review_success">🎉 Все задачи выполнены!</string>
+</resources>
