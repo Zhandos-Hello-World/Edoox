@@ -165,6 +165,92 @@ Markdown
 В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
 
 
+<details>
+<summary>1. Схема для вопросов с выбором ответа (CHOICE)</summary>
+```json
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "answers": [
+        { "answer": "string", "correct": true },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false }
+      ]
+    }
+  ]
+}
+\```
+
+<details>
+<summary>1. Схема для заполнение(Fill)</summary>
+```json
+{
+  "questions": [
+    {
+      "question": "string",
+      "explanation": "string",
+      "correct_answer": "string"
+    }
+  ]
+}
+\```
+<details>
+<summary>1. Схема для drag and drop(Drag and drop)</summary>
+```json
+{
+  "quizDragAndDrop": [
+    {
+      "connectedText": {
+        "string": "string",
+        "string": "string",
+        "string": "string"
+      },
+      "explanation": "string"
+    }
+  ]
+}
+\```
+
+  
+📝 Шаблоны генерации промтов (Prompt Engineering)
+
+Для обеспечения высокого качества контента, исключения очевидных вариантов ответов и строгого следования выбранному языку (ru или kk), используются специализированные промты.
+
+🔹 1. Тесты с выбором ответа (toChoiceGeminiPrompt)
+
+Промт требует от модели создания дистракторов (неверных вариантов), основанных на классических ошибках учащихся, исключая чисто теоретические вопросы в пользу практических задач:
+
+Generate {questions} {subject} questions for school-level education (grades 5–9).
+
+Return the result strictly in JSON format.
+Do not include any explanations, comments, or any text outside the JSON.
+
+The language of all questions and answers must be controlled by the parameter below:
+LANGUAGE: {language}
+
+FORMAT:
+{expectType}
+
+REQUIREMENTS:
+- Generate exactly {questions} questions
+- Each question must be unique in topic
+- Difficulty level: medium school level (not too easy, not olympiad level)
+- Questions must be problem-solving or calculation-based (avoid theoretical questions like definitions)
+- Each question must have exactly 4 answer options
+- Exactly 1 correct answer per question (correct: true), all others must be false
+- Answers must be realistic and plausible (include common student mistakes)
+
+ADDITIONAL RULES:
+- Do not repeat patterns or numbers across questions
+- Distractor answers must be believable
+- Avoid obvious correct answers
+- Output must be valid JSON only (no trailing commas, no extra text)
+- All text (questions + answers) must strictly follow the LANGUAGE parameter
+
+
 
 
 
