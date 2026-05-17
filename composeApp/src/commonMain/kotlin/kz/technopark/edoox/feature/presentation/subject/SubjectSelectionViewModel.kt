@@ -18,9 +18,11 @@ import kz.technopark.edoox.shared.coreui.icons.HistoryApiIcon
 import kz.technopark.edoox.shared.coreui.icons.LanguageIcon
 import kz.technopark.edoox.shared.coreui.icons.MathIcon
 import kz.technopark.edoox.shared.coreui.theme.language.AppTranslations
+import kz.technopark.edoox.shared.coreui.theme.language.LocaleManager
 
 class SubjectSelectionViewModel(
     private val appTranslations: AppTranslations,
+    private val localeManager: LocaleManager,
     private val router: AppRouter,
 ) : SubjectSelectionController, ViewModel() {
     private val _uiState = MutableStateFlow(
@@ -52,7 +54,8 @@ class SubjectSelectionViewModel(
                 loadingLauncher = LoadingLauncher(
                     titleText = "Загрузка материалов...",
                     loadingBehavior = SubjectLoadingBehavior(
-                        subject = _uiState.value.selectedSubject?.subjectType!!
+                        subject = _uiState.value.selectedSubject?.subjectType!!,
+                       currentLocale =  localeManager.currentLocale.value
                     ) as LoadingBehavior<LoadedData>,
                 )
             )

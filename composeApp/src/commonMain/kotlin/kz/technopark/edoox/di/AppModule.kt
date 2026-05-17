@@ -13,7 +13,6 @@ import kz.technopark.edoox.feature.data.mapper.QuizGeminiPromptMapper
 import kz.technopark.edoox.feature.data.mapper.QuizRequestMapper
 import kz.technopark.edoox.feature.data.remote.gemini.GeminiService
 import kz.technopark.edoox.feature.data.repository.DefaultQuizRepository
-import kz.technopark.edoox.feature.data.repository.GeminiRepository
 import kz.technopark.edoox.feature.domain.interactor.QuizInteractor
 import kz.technopark.edoox.feature.domain.repository.QuizRepository
 import kz.technopark.edoox.feature.presentation.error.ErrorStateScreenLauncher
@@ -42,18 +41,10 @@ fun appModule() = module {
 
     single<HttpClient> { httpClient }
 
-
-    single {
-        GeminiRepository(
-            client = get(),
-            apiKey = "AIzaSyC7nB81o0gDPcv2TPBxlMOXJ_NrdohF_JU",
-        )
-    }
-
     single {
         GeminiService(
             client = get(),
-            apiKey = "AIzaSyC7nB81o0gDPcv2TPBxlMOXJ_NrdohF_JU",
+            apiKey = "AIzaSyDSzjJdivYr2BbkovQo7PzZPj-F5y5QhZg",
         )
     }
 
@@ -80,7 +71,6 @@ fun appModule() = module {
 
     viewModel {
         MainViewModel(
-            geminiRepository = get(),
             themeManager = get(),
             localeManager = get(),
             router = get(),
@@ -90,6 +80,7 @@ fun appModule() = module {
     viewModel { (appTranslations: AppTranslations) ->
         SubjectSelectionViewModel(
             appTranslations = appTranslations,
+            localeManager = get(),
             router = get(),
         )
     }

@@ -43,8 +43,8 @@ fun ErrorScreenEntryPoint(
     val appTranslations = AppStrings.current
     val viewModel: ErrorStateScreenViewModel = koinViewModel {
         parametersOf(
-            launcher,
             appTranslations,
+            launcher,
         )
     }
     val uiState by viewModel.uiState.collectAsState()

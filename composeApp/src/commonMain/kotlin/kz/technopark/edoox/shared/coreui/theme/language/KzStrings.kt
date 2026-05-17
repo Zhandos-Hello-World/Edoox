@@ -31,7 +31,7 @@ object KzStrings : AppTranslations {
 
     override val swipeToProceed = "Жалғастыру үшін солға немесе оңға сырғытыңыз"
     override val remembered = "Есте сақтадым"
-    override val allCaughtUp = "Бәрі орындалды! / Ештеңе қалмады!"
+    override val allCaughtUp = "Бәрі орындалды!"
     override val oopsSomethingWrong = "Ой! Бірдеңе дұрыс болмады"
     override val errorLoadingData = "Деректерді жүктеу кезінде қате кетті"
     override val tryAgain = "Қайтадан байқап көру"

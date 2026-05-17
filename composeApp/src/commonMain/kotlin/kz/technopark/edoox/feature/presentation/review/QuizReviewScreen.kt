@@ -193,7 +193,9 @@ fun ReviewCardContent(item: QuizDvo) {
             val userAnswer = when (item) {
                 is QuizDvo.ChoiceDvo -> item.uiAnswers.first { it.isSelected }.text
                 is QuizDvo.DragAndDropDvo -> {
-                    "DRAG AND DROP"
+                    item.userMatches.entries.joinToString(separator = "\n") { (question, answer) ->
+                        "$question ➔ ${answer ?: "-"}"
+                    }
                 }
 
                 is QuizDvo.FillDvo -> item.inputTextFieldValue
@@ -202,7 +204,9 @@ fun ReviewCardContent(item: QuizDvo) {
             val correctAnswer = when (item) {
                 is QuizDvo.ChoiceDvo -> item.uiAnswers.first { it.isCorrect }.text
                 is QuizDvo.DragAndDropDvo -> {
-                    "DRAG AND DROP"
+                    item.map.entries.joinToString(separator = "\n") { (question, answer) ->
+                        "$question ➔ ${answer ?: "-"}"
+                    }
                 }
 
                 is QuizDvo.FillDvo -> item.correctAnswer

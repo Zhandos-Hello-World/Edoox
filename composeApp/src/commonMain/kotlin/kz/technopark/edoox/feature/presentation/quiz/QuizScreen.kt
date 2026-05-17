@@ -75,7 +75,7 @@ fun QuizScreen(
                         .padding(vertical = 24.dp)
                         .padding(horizontal = 16.dp),
                     onClick = onActionClick,
-                    text = if (currentQuestion?.isAnswered == true) AppStrings.current.next else AppStrings.current.check,
+                    text = if (currentQuestion?.isAnswered == true) AppStrings.current.continueText else AppStrings.current.check,
                     enabled = state.isSubmitButtonEnabled,
 
                 )

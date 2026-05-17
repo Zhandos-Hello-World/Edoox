@@ -3,6 +3,7 @@ package kz.technopark.edoox.feature.data.interactor
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kz.technopark.edoox.feature.domain.interactor.QuizInteractor
 import kz.technopark.edoox.feature.domain.model.QuizModels
 import kz.technopark.edoox.feature.domain.model.QuizParams
@@ -14,13 +15,14 @@ class DefaultQuizInteractor(
 
     override suspend fun getQuizQuestions(params: List<QuizParams>): QuizModels {
         return coroutineScope {
-            val deferredQuestions = params.map { param ->
-                async {
-                    getQuizQuestion(param)
-                }
-            }
+            val results = mutableListOf<QuizModels>()
 
-            val results: List<QuizModels> = deferredQuestions.awaitAll()
+            params.forEach { param ->
+                val question = getQuizQuestion(param)
+                results.add(question)
+
+                delay(500L)
+            }
 
             QuizModels(
                 quizModels = results.flatMap { it.quizModels },
