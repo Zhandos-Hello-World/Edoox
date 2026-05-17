@@ -2,6 +2,55 @@
 
 **Edoox.com** — это кроссплатформенное мобильное приложение (ANDROID & IOS), разработанное на базе **Kotlin Multiplatform (KMP)** и **Compose Multiplatform**. Приложение предназначено для интерактивного обучения, подготовки к тестированиям, генерации кастомных квизов с помощью нейросетей и последующей работы над ошибками.
 
+Screen LightTheme: 
+<div align="center" style="display: flex; flex-direction: row; justify-content: center; gap: 10px; flex-wrap: wrap;">
+  <img src="https://github.com/user-attachments/assets/6801517d-1eda-44ea-a7f7-aae1b2e29d43" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/85ae363a-643a-4b71-a951-23fb8b97287c" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/2f170ce8-6331-4915-a4f4-018e01a8ffac" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/f68bf478-82c6-493c-8a7f-8bfd93140440" width="220" style="border-radius: 14px;" />
+</div>
+
+
+
+Screen DarkTheme: 
+<div align="center" style="display: flex; flex-direction: row; justify-content: center; gap: 10px; flex-wrap: wrap;">
+  <img src="https://github.com/user-attachments/assets/6074a5d6-a60e-4954-bef6-6376741fb68f" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/2bae58d6-9bf9-4fa5-aa35-14ce6d9c6b35" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/6d5b0e1c-aa94-4340-9cd9-9749e94e2be7" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/8ffc8a01-a33e-42e0-bd43-d63bc4d142d9" width="220" style="border-radius: 14px;" />
+  <img src="https://github.com/user-attachments/assets/df923b4b-d856-48c2-a174-29cd15556d2f" width="220" style="border-radius: 14px;" />
+</div>
+
+## 🎥 Демонстрация работы (Видео)
+
+<div align="center" style="display: flex; flex-direction: row; justify-content: center; gap: 15px; flex-wrap: wrap;">
+  
+  <div style="text-align: center;">
+    <p><b>☀️ Светлая тема & Квиз</b></p>
+    <video src="https://github.com/user-attachments/assets/dde843a4-5409-4a87-ac3e-f8c22c4d666f" 
+           width="260" 
+           controls 
+           autoplay 
+           loop 
+           muted 
+           style="border-radius: 14px; box-shadow: 0px 4px 10px rgba(0,0,0,0.15);">
+    </video>
+  </div>
+
+  <div style="text-align: center;">
+    <p><b>🌙 Темная тема & Работа над ошибками</b></p>
+    <video src="https://github.com/user-attachments/assets/9aead25e-8d7a-411e-8bba-14da7da93366" 
+           width="260" 
+           controls 
+           autoplay 
+           loop 
+           muted 
+           style="border-radius: 14px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
+    </video>
+  </div>
+
+</div>
+
 ---
 
 ## 🚀 Архитектурный стек и технологии
@@ -56,16 +105,6 @@
 Выбрать конфигурацию `androidApp` в Android Studio и нажать **Run**, либо выполнить в терминале:
 ```bash
 ./gradlew :androidApp:assembleDebug
-
-
-
-Video
-https://github.com/user-attachments/assets/dde843a4-5409-4a87-ac3e-f8c22c4d666f
-
-
-https://github.com/user-attachments/assets/9aead25e-8d7a-411e-8bba-14da7da93366
-
-
 
 
 
