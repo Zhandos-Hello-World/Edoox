@@ -102,7 +102,7 @@ Screen DarkTheme:
 
 В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
 
-<details>
+<>
 <summary>1. Схема для вопросов с выбором ответа (CHOICE)</summary>
 
 ```json
@@ -165,8 +165,7 @@ Markdown
 В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
 
 
-<details>
-<summary>1. Схема для вопросов с выбором ответа (CHOICE)</summary>
+1. Схема для вопросов с выбором ответа (CHOICE)
 ```json
 {
   "questions": [
@@ -182,10 +181,9 @@ Markdown
     }
   ]
 }
-\```
+```
 
-<details>
-<summary>1. Схема для заполнение(Fill)</summary>
+2. Схема для заполнение(Fill)
 ```json
 {
   "questions": [
@@ -196,24 +194,25 @@ Markdown
     }
   ]
 }
-\```
-<details>
-<summary>1. Схема для drag and drop(Drag and drop)</summary>
+```
+
+3. Схема для drag and drop(Drag and drop)
 ```json
 {
-  "quizDragAndDrop": [
+  "questions": [
     {
-      "connectedText": {
-        "string": "string",
-        "string": "string",
-        "string": "string"
-      },
-      "explanation": "string"
+      "question": "string",
+      "explanation": "string",
+      "answers": [
+        { "answer": "string", "correct": true },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false },
+        { "answer": "string", "correct": false }
+      ]
     }
   ]
 }
-\```
-
+```
   
 📝 Шаблоны генерации промтов (Prompt Engineering)
 
@@ -251,7 +250,59 @@ ADDITIONAL RULES:
 - All text (questions + answers) must strictly follow the LANGUAGE parameter
 
 
+Generate {questions} {subject} tasks for school-level education (grades 5–9).
 
+Return the result strictly in JSON format.
+Do not include any explanations, comments, or any text outside the JSON.
+
+The language of all text must be controlled by the parameter below:
+LANGUAGE: {language}
+
+FORMAT:
+{expectType}
+
+REQUIREMENTS:
+- Generate exactly {questions} tasks
+- Each task must be unique in topic
+- Difficulty level: medium school level (not too easy, not olympiad level)
+- Tasks must be problem-solving, logical, or calculation-based (avoid theoretical questions like definitions)
+- Each task must contain exactly 4 matching pairs inside the "connections" object
+- There must be a strict 1-to-1 logical connection between each key and its corresponding value (no ambiguous or overlapping matches)
+- Values must be realistic and plausible, serving as good distractors for other keys within the same task to prevent easy guessing by elimination
+
+ADDITIONAL RULES:
+- Do not repeat patterns or numbers across tasks
+- Avoid obvious or trivial connections
+- Output must be valid JSON only (no trailing commas, no markdown wrapping like ```json, just raw text)
+- All text (instructions, keys, and values) must strictly follow the LANGUAGE parameter
+
+
+
+Generate {questions} {subject} tasks for school-level education (grades 5–9).
+
+Return the result strictly in JSON format.
+Do not include any explanations, comments, or any text outside the JSON.
+
+The language of all text must be controlled by the parameter below:
+LANGUAGE: {language}
+
+FORMAT:
+{expectType}
+
+
+REQUIREMENTS:
+- Generate exactly {questions} tasks
+- Each task must be unique in topic
+- Difficulty level: medium school level (not too easy, not olympiad level)
+- Tasks must be problem-solving or calculation-based (avoid theoretical questions like definitions)
+- The "correct_answer" must be clear, unambiguous, and easy to verify automatically (avoid long descriptive answers)
+- If the answer is a number, specify it clearly without redundant units unless requested in the question text
+
+ADDITIONAL RULES:
+- Do not repeat patterns or numbers across tasks
+- Avoid obvious or trivial questions
+- Output must be valid JSON only (no trailing commas, no markdown wrapping like ```json, just raw text)
+- All text (questions and answers) must strictly follow the LANGUAGE parameter
 
 
 ---
@@ -267,9 +318,3 @@ ADDITIONAL RULES:
 Выбрать конфигурацию `androidApp` в Android Studio и нажать **Run**, либо выполнить в терминале:
 ```bash
 ./gradlew :androidApp:assembleDebug
-
-
-
-
-
-
