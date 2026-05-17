@@ -164,55 +164,6 @@ Markdown
 
 В зависимости от выбранного типа квиза (`ExpectType`), модель настраивается на заполнение одной из трех строгих JSON-структур через метод `toRequest()`:
 
-1. Схема для вопросов с выбором ответа (CHOICE)
-{
-  "questions": [
-    {
-      "question": "string",
-      "explanation": "string",
-      "answers": [
-        { "answer": "string", "correct": true },
-        { "answer": "string", "correct": false },
-        { "answer": "string", "correct": false },
-        { "answer": "string", "correct": false }
-      ]
-    }
-  ]
-}
-
-<details>
-<summary>1. Схема для заполнение(Fill)</summary>
-{
-  "questions": [
-    {
-      "question": "string",
-      "explanation": "string",
-      "correct_answer": "string"
-    }
-  ]
-}
-<details>
-<summary>1. Схема для drag and drop(Drag and drop)</summary>
-{
-  "quizDragAndDrop": [
-    {
-      "connectedText": {
-        "string": "string",
-        "string": "string",
-        "string": "string"
-      },
-      "explanation": "string"
-    }
-  ]
-}
-  
-📝 Шаблоны генерации промтов (Prompt Engineering)
-
-Для обеспечения высокого качества контента, исключения очевидных вариантов ответов и строгого следования выбранному языку (ru или kk), используются специализированные промты.
-
-🔹 1. Тесты с выбором ответа (toChoiceGeminiPrompt)
-
-Промт требует от модели создания дистракторов (неверных вариантов), основанных на классических ошибках учащихся, исключая чисто теоретические вопросы в пользу практических задач:
 
 
 
